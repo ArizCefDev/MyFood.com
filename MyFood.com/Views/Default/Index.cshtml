@@ -1,9 +1,13 @@
-﻿
+﻿@model List<MyFood.com.Entity.Category>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_DefaultLayout.cshtml";
 }
 
+@foreach (var item in Model)
+{
+    <p>@item.Name</p>
+}
 <section class="w3l-products py-5" id="projects">
     <div class="container py-lg-3">
         <div class="header-section text-center mx-auto">

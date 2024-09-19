@@ -1,7 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using MyFood.com.Context;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//AppdbContext
+builder.Services.AddDbContext<AppDBContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("DefautConnection")
+));
 
 var app = builder.Build();
 
