@@ -14,8 +14,10 @@ namespace MyFood.com.Controllers
 
         public IActionResult Index()
         {
-            var x = _dbContext.Category.ToList();
-            return View(x);
+            ViewBag.category = _dbContext.Category.ToList();
+            var values = _dbContext.Menu.ToList();
+            return View(values);
         }
+
     }
 }

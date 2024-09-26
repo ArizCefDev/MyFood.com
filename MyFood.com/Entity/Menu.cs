@@ -25,7 +25,8 @@ namespace MyFood.com.Entity
         [Column(TypeName = "decimal(10,2)")]
         public decimal Discount { get; set; }
 
-        public int Category_ID { get; set; }
+        [ForeignKey("Category")]
+        public int? Category_ID { get; set; }
         public Category? Category { get; set; }
 
 

@@ -1,13 +1,11 @@
-﻿@model List<MyFood.com.Entity.Category>
+﻿@model List<MyFood.com.Entity.Menu>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_DefaultLayout.cshtml";
 }
 
-@foreach (var item in Model)
-{
-    <p>@item.Name</p>
-}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <section class="w3l-products py-5" id="projects">
     <div class="container py-lg-3">
         <div class="header-section text-center mx-auto">
@@ -18,749 +16,84 @@
             <div class="mx-auto">
                 <!--Horizontal Tab-->
                 <div id="parentHorizontalTab">
-                    <ul class="resp-tabs-list hor_1">
-                        <li>Fast Food</li>
-                        <li>Hot Pizza</li>
-                        <li>Raw Meet</li>
-                        <div class="clear"></div>
-                    </ul>
                     <div class="resp-tabs-container hor_1">
                         <div class="products-content">
                             <div class="row">
-                                <div class="col-lg-3 col-sm-6 mt-4">
-                                    <div class="content">
-                                        <a href="#url">
-                                            <img src="~/user/assets/images/1.png" class="img-fluid" alt="">
-                                            <div class="lte-item-descr text-center">
-                                                <ul class="star-rating d-flex justify-content-center">
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
+                               @foreach (var item in Model)
+                                {
+                                    <div class="col-lg-3 col-sm-6 mt-4">
+                                        <div class="content">
+                                            <a href="#url">
+                                                <img src="@item.ImageURL" class="img-fluid" alt="">
+                                                <div class="lte-item-descr text-center">
+                                                    <ul class="star-rating d-flex justify-content-center">
+                                                        <li>
+                                                            <a href="#">
+                                                                <span class="@item.Star1  mr-1"
+                                                                      aria-hidden="true"></span>
 
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
+                                                                <span class="@item.Star2 mr-1"
+                                                                      aria-hidden="true"></span>
 
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
+                                                                <span class="@item.Star3  mr-1"
+                                                                      aria-hidden="true"></span>
 
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
+                                                                <span class="@item.Star4  mr-1"
+                                                                      aria-hidden="true"></span>
 
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
+                                                                <span class="@item.Star5  mr-1"
+                                                                      aria-hidden="true"></span>
 
-                                                        </a>
-                                                    </li>
+                                                            </a>
+                                                        </li>
 
 
-                                                </ul>
-                                                <h4 class="product-title">
-                                                    Cheeseburger with
-                                                    Salad
-                                                </h4>
+                                                    </ul>
+                                                    <h4 class="product-title">
+                                                        @item.Title
+                                                    </h4>
 
-                                                <p class="mb-4">
-                                                    Sed ut perspiciatis unde omnis iste natus
-                                                    error sit voluptatem
-                                                </p>
-                                                <span class="price">
-                                                    <span class="amount">
-                                                        <span class="price-currency=">$</span>19.00
+                                                   @if (item.Text.Length>40)
+                                                    {
+                                                        <p class="mb-4" title="@item.Text">
+                                                            @item.Text.Remove(39) ...
+                                                        </p>
+                                                    }
+                                                    else
+                                                    {
+                                                        <p class="mb-4" title="@item.Text">
+                                                            @item.Text
+                                                        </p>
+                                                    }
+                                                    <span class="price">
+                                                        <span class="amount">
+                                                            <span class="price-currency=">$</span>@item.Price 
+                                                            <del style="color:red;"><span class="price-currency=">$</span>@item.Discount</del>
+                                                        </span>
                                                     </span>
-                                                </span>
 
-                                            </div>
-                                        </a>
+                                                </div>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6 mt-4">
-                                    <div class="content">
-                                        <a href="#url">
-                                            <img src="~/user/assets/images/2.png" class="img-fluid" alt="">
-                                            <div class="lte-item-descr text-center">
-                                                <ul class="star-rating d-flex justify-content-center">
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-
-
-                                                </ul>
-                                                <h4 class="product-title">Cheeseburger with Bacon</h4>
-
-                                                <p class="mb-4">
-                                                    Sed ut perspiciatis unde omnis iste natus
-                                                    error sit voluptatem
-                                                </p>
-                                                <span class="price">
-                                                    <span class="amount">
-                                                        <span class="price-currency=">$</span>29.00
-                                                    </span>
-                                                </span>
-
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6 mt-4">
-                                    <div class="content">
-                                        <a href="#url">
-                                            <img src="~/user/assets/images/3.png" class="img-fluid" alt="">
-                                            <div class="lte-item-descr text-center">
-                                                <ul class="star-rating d-flex justify-content-center">
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-
-
-                                                </ul>
-                                                <h4 class="product-title">Classic Bacon Hamburger</h4>
-
-                                                <p class="mb-4">
-                                                    Sed ut perspiciatis unde omnis iste natus
-                                                    error sit voluptatem
-                                                </p>
-                                                <span class="price">
-                                                    <span class="amount">
-                                                        <span class="price-currency=">$</span>30.00
-                                                    </span>
-                                                </span>
-
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6 mt-4">
-                                    <div class="content">
-                                        <a href="#url">
-                                            <img src="~/user/assets/images/1.png" class="img-fluid" alt="">
-                                            <div class="lte-item-descr text-center">
-                                                <ul class="star-rating d-flex justify-content-center">
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-
-
-                                                </ul>
-                                                <h4 class="product-title">
-                                                    Cheeseburger with
-                                                    Salad
-                                                </h4>
-
-                                                <p class="mb-4">
-                                                    Sed ut perspiciatis unde omnis iste natus
-                                                    error sit voluptatem
-                                                </p>
-                                                <span class="price">
-                                                    <span class="amount">
-                                                        <span class="price-currency=">$</span>19.00
-                                                    </span>
-                                                </span>
-
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="products-content">
-                            <div class="row">
-                                <div class="col-lg-3 col-sm-6 mt-4">
-                                    <div class="content">
-                                        <a href="#url">
-                                            <img src="~/user/assets/images/4.png" class="img-fluid" alt="">
-                                            <div class="lte-item-descr text-center">
-                                                <ul class="star-rating d-flex justify-content-center">
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-
-
-                                                </ul>
-                                                <h4 class="product-title">Classic Seafood Pizza</h4>
-
-                                                <p class="mb-4">
-                                                    Sed ut perspiciatis unde omnis iste natus
-                                                    error sit voluptatem
-                                                </p>
-                                                <span class="price">
-                                                    <span class="amount">
-                                                        <span class="price-currency=">$</span>30.00
-                                                    </span>
-                                                </span>
-
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6 mt-4">
-                                    <div class="content">
-                                        <a href="#url">
-                                            <img src="~/user/assets/images/5.png" class="img-fluid" alt="">
-                                            <div class="lte-item-descr text-center">
-                                                <ul class="star-rating d-flex justify-content-center">
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-
-
-                                                </ul>
-                                                <h4 class="product-title">Shrimp &amp; Olive Pizza</h4>
-
-                                                <p class="mb-4">
-                                                    Sed ut perspiciatis unde omnis iste natus
-                                                    error sit voluptatem
-                                                </p>
-                                                <span class="price">
-                                                    <span class="amount">
-                                                        <span class="price-currency=">$</span>30.00
-                                                    </span>
-                                                </span>
-
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6 mt-4">
-                                    <div class="content">
-                                        <a href="#url">
-                                            <img src="~/user/assets/images/6.png" class="img-fluid" alt="">
-                                            <div class="lte-item-descr text-center">
-                                                <ul class="star-rating d-flex justify-content-center">
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-
-
-                                                </ul>
-                                                <h4 class="product-title">Thin Cheese Pizza</h4>
-
-                                                <p class="mb-4">
-                                                    Sed ut perspiciatis unde omnis iste natus
-                                                    error sit voluptatem
-                                                </p>
-                                                <span class="price">
-                                                    <span class="amount">
-                                                        <span class="price-currency=">$</span>30.00
-                                                    </span>
-                                                </span>
-
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6 mt-4">
-                                    <div class="content">
-                                        <a href="#url">
-                                            <img src="~/user/assets/images/4.png" class="img-fluid" alt="">
-                                            <div class="lte-item-descr text-center">
-                                                <ul class="star-rating d-flex justify-content-center">
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-
-
-                                                </ul>
-                                                <h4 class="product-title">Classic Seafood Pizza</h4>
-                                                <p class="mb-4">
-                                                    Sed ut perspiciatis unde omnis iste natus
-                                                    error sit voluptatem
-                                                </p>
-                                                <span class="price">
-                                                    <span class="amount">
-                                                        <span class="price-currency=">$</span>30.00
-                                                    </span>
-                                                </span>
-
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="products-content">
-                            <div class="row">
-                                <div class="col-lg-3 col-sm-6 mt-4">
-                                    <div class="content">
-                                        <a href="#url">
-                                            <img src="~/user/assets/images/7.png" class="img-fluid" alt="">
-                                            <div class="lte-item-descr text-center">
-                                                <ul class="star-rating d-flex justify-content-center">
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-
-
-                                                </ul>
-                                                <h4 class="product-title">Herb Chicken Fillet</h4>
-
-                                                <p class="mb-4">
-                                                    Sed ut perspiciatis unde omnis iste natus
-                                                    error sit voluptatem
-                                                </p>
-                                                <span class="price">
-                                                    <span class="amount">
-                                                        <span class="price-currency=">$</span>30.00
-                                                    </span>
-                                                </span>
-
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6 mt-4">
-                                    <div class="content">
-                                        <a href="#url">
-                                            <img src="~/user/assets/images/8.png" class="img-fluid" alt="">
-                                            <div class="lte-item-descr text-center">
-                                                <ul class="star-rating d-flex justify-content-center">
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-
-
-                                                </ul>
-                                                <h4 class="product-title">Chicken Fillet with Salad</h4>
-
-                                                <p class="mb-4">
-                                                    Sed ut perspiciatis unde omnis iste natus
-                                                    error sit voluptatem
-                                                </p>
-                                                <span class="price">
-                                                    <span class="amount">
-                                                        <span class="price-currency=">$</span>30.00
-                                                    </span>
-                                                </span>
-
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6 mt-4">
-                                    <div class="content">
-                                        <a href="#url">
-                                            <img src="~/user/assets/images/9.png" class="img-fluid" alt="">
-                                            <div class="lte-item-descr text-center">
-                                                <ul class="star-rating d-flex justify-content-center">
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-
-
-                                                </ul>
-                                                <h4 class="product-title">Boiled Pork with Spices</h4>
-
-                                                <p class="mb-4">
-                                                    Sed ut perspiciatis unde omnis iste natus
-                                                    error sit voluptatem
-                                                </p>
-                                                <span class="price">
-                                                    <span class="amount">
-                                                        <span class="price-currency=">$</span>30.00
-                                                    </span>
-                                                </span>
-
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6 mt-4">
-                                    <div class="content">
-                                        <a href="#url">
-                                            <img src="~/user/assets/images/7.png" class="img-fluid" alt="">
-                                            <div class="lte-item-descr text-center">
-                                                <ul class="star-rating d-flex justify-content-center">
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="fa fa-star  mr-1"
-                                                                  aria-hidden="true"></span>
-
-                                                        </a>
-                                                    </li>
-
-
-                                                </ul>
-                                                <h4 class="product-title">Herb Chicken Fillet</h4>
-                                                <p class="mb-4">
-                                                    Sed ut perspiciatis unde omnis iste natus
-                                                    error sit voluptatem
-                                                </p>
-                                                <span class="price">
-                                                    <span class="amount">
-                                                        <span class="price-currency=">$</span>30.00
-                                                    </span>
-                                                </span>
-
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-
+                                }
+                               
                             </div>
                         </div>
                     </div>
