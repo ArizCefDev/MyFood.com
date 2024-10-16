@@ -8,6 +8,8 @@ namespace MyFood.com.Context
         public DbSet<Category> Category { get; set; }
         public DbSet<Menu> Menu { get; set; }
         public DbSet<Social> Social { get; set; }
+        public DbSet<About> About { get; set; }
+        public DbSet<Userr> Userr { get; set; }
 
         public AppDBContext(DbContextOptions<AppDBContext> options)
             : base(options)

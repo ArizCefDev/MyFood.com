@@ -48,16 +48,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav mx-lg-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="index.html">Home </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="about.html">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="services.html">Services</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
+                            <a class="nav-link" href="/Default/Index/">Home </a>
                         </li>
                         <li class="nav-item">
                             <div class="dropdown">
@@ -72,7 +63,21 @@
                                 </div>
                             </div>
                         </li>
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Default/About/">About</a>
+                        </li>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Admin/Index/">Admin</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Login/SignIn/">Log In</a>
+                            </li>
+                        }
                     </ul>
                     <ul class="navbar-nav search-right mt-lg-0 mt-2">
                         <li class="nav-item mr-3" title="Search">
@@ -83,7 +88,7 @@
                         <li class="nav-item">
                             <a href="tel:+(12)234-11-24"
                                class="btn btn-primary btn-style d-none d-lg-block btn-style mr-2">
-                                <span class="fa fa-phone mr-3" aria-hidden="true"></span> (32)234-14-94
+                                <span class="fa fa-phone mr-3" aria-hidden="true"></span> (070)309-03-22
                             </a>
                         </li>
                     </ul>
@@ -92,8 +97,8 @@
                     <!-- search popup -->
                     <div id="search" class="pop-overlay">
                         <div class="popup">
-                            <form action="#" method="GET" class="d-sm-flex">
-                                <input type="search" placeholder="Search.." name="search" required="required"
+                            <form  method="GET" asp-controller="Default" asp-action="Index" class="d-sm-flex">
+                                <input type="search" placeholder="Search.." name="searchString" required="required"
                                        autofocus>
                                 <button type="submit">Search</button>
                                 <a class="close" href="#url">&times;</a>

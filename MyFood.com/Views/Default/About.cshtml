@@ -1,0 +1,39 @@
+﻿@model List<MyFood.com.Entity.About>
+
+@{
+    ViewData["Title"] = "About";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+<!-- /content-6-->
+<section class="w3l-content-6" id="about">
+    <!-- /content-6-main-->
+    <div class="content-6-mian py-5">
+        <div class="container py-lg-5 py-md-4">
+          @foreach (var item in Model)
+            {
+                <div class="content-info-in row">
+                    <div class="content-gd col-lg-6 pr-lg-4">
+                        <div class="title-content text-left mb-sm-4 mb-3">
+                            <h3 class="subhny-title">About Us</h3>
+                            <h3 class="hny-title">@item.Title</h3>
+                        </div>
+                        <p>
+                           @item.Text1
+                        </p>
+                    </div>
+                    <div class="content-gd col-lg-3 col-6 pl-lg-4 pl-lg-5 mt-lg-0 mt-md-5 mt-4">
+                        <img src="@item.img" alt="about" class="radius-image img-fluid">
+                    </div>
+                    <div class="content-gd col-lg-3 col-6 pl-lg-4 pl-lg-5 mt-lg-0 mt-md-5 mt-4">
+                        <img src="@item.img2" alt="about" class="radius-image img-fluid">
+                    </div>
+                </div>
+                <p class="mt-4">
+                  @item.Text2
+                </p>
+            }
+        </div>
+    </div>
+</section>
+<!-- //content-6-->

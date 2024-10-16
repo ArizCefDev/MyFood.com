@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using MyFood.com.Context;
 
@@ -10,6 +11,28 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDBContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefautConnection")
 ));
+
+//Cookie
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+  .AddCookie((opt =>
+  {
+      //opt.LoginPath = "/SignIn";
+      opt.Cookie.HttpOnly = true;
+      opt.Cookie.Name = "AuthCookie";
+      opt.Cookie.MaxAge = TimeSpan.FromDays(10);
+
+      opt.Events = new CookieAuthenticationEvents
+      {
+          OnRedirectToLogin = x =>
+          {
+              x.HttpContext.Response.StatusCode = 401;
+              return Task.CompletedTask;
+          }
+      };
+  }));
 
 var app = builder.Build();
 
@@ -25,6 +48,11 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+//cookie
+app.UseSession();
+app.UseAuthentication();
+///
 
 app.UseAuthorization();
 

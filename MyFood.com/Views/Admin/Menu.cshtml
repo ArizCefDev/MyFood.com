@@ -1,0 +1,94 @@
+﻿@model List<MyFood.com.Entity.Menu>
+
+@{
+    ViewData["Title"] = "Menu";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<div class="main-grid">
+	<div class="agile-grids">
+		<!-- tables -->
+
+		<div class="table-heading">
+			<h2>Menus Tables</h2>
+		</div>
+		<div class="agile-tables">
+			<div class="w3l-table-info">
+				<a href="#" class="btn btn-primary">New</a>
+				<table id="table">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Image</th>
+							<th>Stars</th>
+							<th>Title</th>
+							<th>Price</th>
+							<th>Discount</th>
+							<th>CategoryID</th>
+							<th>Update</th>
+							<th>Delete</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (var item in Model)
+						{
+							<tr>
+								<td>@item.ID</td>
+								<td><img src="@item.ImageURL" style="width:100px; height:100px"/></td>
+								<td>
+									<ul class="star-rating d-flex justify-content-center" style="list-style:none;">
+										<li>
+											<a href="#">
+												<span class="@item.Star1  mr-1"
+													  aria-hidden="true"></span>
+
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="@item.Star2 mr-1"
+													  aria-hidden="true"></span>
+
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="@item.Star3  mr-1"
+													  aria-hidden="true"></span>
+
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="@item.Star4  mr-1"
+													  aria-hidden="true"></span>
+
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="@item.Star5  mr-1"
+													  aria-hidden="true"></span>
+
+											</a>
+										</li>
+
+
+									</ul>
+								</td>
+								<td>@item.Title</td>
+								<td>$ @item.Price</td>
+								<td>$ @item.Discount</td>
+								<td>@item.Category_ID</td>
+								<td><a href="#" class="btn btn-success">Update</a></td>
+								<td><a href="#" style="background:red;" class="btn btn-danger">Delete</a></td>
+							</tr>
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- //tables -->
+	</div>
+</div>

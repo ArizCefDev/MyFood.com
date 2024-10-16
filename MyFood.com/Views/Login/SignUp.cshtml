@@ -1,0 +1,92 @@
+﻿@model MyFood.com.Entity.Userr
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>Sign In</title>
+
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Google fonts -->
+    <link href="//fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="~/login/css/style.css" type="text/css" media="all" />
+
+</head>
+
+<body>
+    <div class="signinform">
+        <h1>Service Register Form</h1>
+        <!-- container -->
+        <div class="container">
+            <!-- main content -->
+            <div class="w3l-form-info">
+                <div class="w3_info">
+                    <h2>Register</h2>
+                    <form method="post">
+                        <div class="input-group">
+                            <span><i class="fas fa-user" aria-hidden="true"></i></span>
+                            <input type="text" placeholder="Username or Email" required="" asp-for="UserName">
+                        </div>
+                        <div class="input-group">
+                            <span><i class="fas fa-key" aria-hidden="true"></i></span>
+                            <input type="Password" placeholder="Password" required="" asp-for="Password">
+                        </div>
+                        <div class="form-row bottom">
+                            <div class="form-check">
+                                <input type="checkbox" id="remenber" name="remenber" value="remenber">
+                                <label for="remenber"> Remember me?</label>
+                            </div>
+                            <a href="#url" class="forgot">Forgot password?</a>
+                        </div>
+                        <button class="btn btn-primary btn-block" type="submit">Register</button>
+                    </form>
+                    <p class="continue"><span>or Register with</span></p>
+                    <div class="social-login">
+                        <a href="#facebook">
+                            <div class="facebook">
+                                <span class="fab fa-facebook-f" aria-hidden="true"></span>
+
+                            </div>
+                        </a>
+                        <a href="#twitter">
+                            <div class="twitter">
+                                <span class="fab fa-twitter" aria-hidden="true"></span>
+                            </div>
+                        </a>
+                        <a href="#google">
+                            <div class="google">
+                                <span class="fab fa-google" aria-hidden="true"></span>
+                            </div>
+                        </a>
+                    </div>
+                    <p class="account">You have an account? <a href="/Login/SignIn/">Sign In</a></p>
+                </div>
+            </div>
+            <!-- //main content -->
+        </div>
+        <!-- //container -->
+        <!-- footer -->
+        <div class="footer">
+            <p>
+                &copy; @DateTime.Now.Year Service login form. All Rights Reserved | Design by <a href="https://w3layouts.com/"
+                                                                                                 target="blank">Ariz Ceferli</a>
+            </p>
+        </div>
+        <!-- footer -->
+    </div>
+
+    <!-- fontawesome v5-->
+    <script src="~/login/js/fontawesome.js"></script>
+
+</body>
+
+</html>
